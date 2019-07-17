@@ -1,0 +1,128 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../../node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _jsxFileName = '/home/javi/Escritorio/TresEnRayaNative/app/components/GameScreen.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Cabecera = require('./Cabecera.js');
+
+var _Cabecera2 = _interopRequireDefault(_Cabecera);
+
+var _Tablero = require('./Tablero.js');
+
+var _Tablero2 = _interopRequireDefault(_Tablero);
+
+var _reactNative = require('react-native');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  App: {
+    displayName: 'App'
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: '/home/javi/Escritorio/TresEnRayaNative/app/components/GameScreen.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var JUGADORX = "jugador 1 - las X";
+var JUGADOR0 = "jugador 2 - los 0";
+
+var App = _wrapComponent('App')(function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      turno: JUGADORX,
+      valores: [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']],
+      contador: 0
+    };
+    _this.appClick = _this.appClick.bind(_this);
+    _this.resetClick = _this.resetClick.bind(_this);
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'appClick',
+    value: function appClick(fila, columna) {
+      var nuevosValores = this.state.valores.slice();
+      var nuevoValor = this.state.turno === JUGADORX ? "X" : "0";
+      nuevosValores[fila][columna] = nuevoValor;
+      this.setState({
+        turno: nuevoValor === "X" ? JUGADOR0 : JUGADORX,
+        valores: nuevosValores,
+        contador: this.state.contador + 1
+      });
+    }
+  }, {
+    key: 'resetClick',
+    value: function resetClick() {
+      var turnoReset = JUGADORX;
+      var valoresReset = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']];
+      var contadorReset = 0;
+      this.setState({
+        turno: turnoReset,
+        valores: valoresReset,
+        contador: contadorReset
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var texto = "Turno del " + this.state.turno;
+      var turno = "Contador " + this.state.contador;
+      return _react3.default.createElement(
+        _reactNative.View,
+        { style: { flex: 1, margin: 10, justifyContent: 'center' }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 51
+          }
+        },
+        _react3.default.createElement(_Cabecera2.default, { texto: texto, contador: turno, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 52
+          }
+        }),
+        _react3.default.createElement(_Tablero2.default, { valores: this.state.valores, appClick: this.appClick, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 53
+          }
+        })
+      );
+    }
+  }]);
+
+  return App;
+}(_react3.default.Component));
+
+exports.default = App;

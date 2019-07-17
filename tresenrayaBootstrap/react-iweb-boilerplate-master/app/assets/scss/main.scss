@@ -1,0 +1,21 @@
+$color: #262828;
+
+body {
+  color: $color;
+}
+
+h2{
+	color: black;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.no_clickable{
+	cursor: not-allowed;
+}
+
+.center{
+	text-align: center;
+}
